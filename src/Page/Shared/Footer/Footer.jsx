@@ -30,7 +30,7 @@ const Footer = () => {
       </div>
       <footer className="footer footer-center p-4 bg-black bg-opacity-90 text-white font-semibold">
         <div>
-          <p>Copyright © CulinaryCloud. All rights reserved.</p>
+          <p>Copyright © {new Date().getFullYear()} CulinaryCloud. All rights reserved.</p>
         </div>
       </footer>
     </div>
