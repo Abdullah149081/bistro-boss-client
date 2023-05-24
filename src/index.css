@@ -12,3 +12,6 @@
 .default {
   @apply font-bold lg:text-lg px-2 text-white tracking-wide  uppercase ml-4 hover:text-[#EEFF25] hover:bg-transparent;
 }
+.carousel {
+  justify-content: center;
+}
