@@ -1,4 +1,5 @@
 /* eslint-disable jsx-a11y/no-noninteractive-tabindex */
+import { Button } from "flowbite-react";
 import React from "react";
 import Banner from "../../Home/Banner/Banner";
 import ActiveLink from "./ActiveLink";
@@ -50,7 +51,9 @@ const Header = () => {
                 <ul className="menu menu-horizontal px-1 boss-navbar">{navbar}</ul>
               </div>
               <div className="navbar-end">
-                <h2 className="btn">Get started</h2>
+                <Button className="w-[110px] lg:w-full" color="gray" pill>
+                  SIGN OUT
+                </Button>
               </div>
             </div>
           </div>
