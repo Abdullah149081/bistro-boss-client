@@ -3,5 +3,12 @@
 @tailwind utilities;
 
 .boss-container {
-  @apply px-4 py-16 mx-auto sm:max-w-xl lg:max-w-screen-lg  2xl:max-w-screen-2xl   lg:py-20 2xl:px-28;
+  @apply px-4 py-16 mx-auto sm:max-w-xl lg:max-w-screen-lg  2xl:max-w-screen-2xl   lg:py-20 2xl:px-20;
+}
+
+.active {
+  @apply font-bold text-lg tracking-wide   text-[#EEFF25] bg-transparent uppercase;
+}
+.default {
+  @apply font-bold text-lg px-2 text-white tracking-wide  uppercase ml-4 hover:text-[#EEFF25] hover:bg-transparent;
 }
