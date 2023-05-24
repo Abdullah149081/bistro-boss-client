@@ -7,8 +7,8 @@
 }
 
 .active {
-  @apply font-bold text-lg tracking-wide   text-[#EEFF25] bg-transparent uppercase;
+  @apply font-bold lg:text-lg tracking-wide   text-[#EEFF25] bg-transparent uppercase;
 }
 .default {
-  @apply font-bold text-lg px-2 text-white tracking-wide  uppercase ml-4 hover:text-[#EEFF25] hover:bg-transparent;
+  @apply font-bold lg:text-lg px-2 text-white tracking-wide  uppercase ml-4 hover:text-[#EEFF25] hover:bg-transparent;
 }
