@@ -1,9 +1,15 @@
+@import url("https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600;700;800;900&display=swap");
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
+.font-cinzel {
+  font-family: "Cinzel", serif;
+}
+
 .boss-container {
-  @apply px-4 py-16 mx-auto sm:max-w-xl lg:max-w-screen-lg  2xl:max-w-screen-2xl   lg:py-20 2xl:px-20;
+  @apply px-4 py-16 mx-auto sm:max-w-xl lg:max-w-screen-lg  2xl:max-w-screen-2xl  lg:py-20 2xl:px-20;
 }
 
 .active {
