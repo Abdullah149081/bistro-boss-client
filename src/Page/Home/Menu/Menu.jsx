@@ -26,6 +26,11 @@ const Menu = () => {
           <MenuItem key={item._id} item={item} />
         ))}
       </div>
+      <div className="text-center mt-12">
+        <button type="button" className="btn btn-boss  text-black">
+          View Full Menu
+        </button>
+      </div>
     </section>
   );
 };

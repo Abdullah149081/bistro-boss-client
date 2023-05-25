@@ -18,6 +18,10 @@
 .default {
   @apply font-bold lg:text-lg px-2 text-white tracking-wide  uppercase ml-4 hover:text-[#EEFF25] hover:bg-transparent;
 }
+
+.btn-boss {
+  @apply bg-transparent text-xl border-0  border-b-4;
+}
 .carousel {
   justify-content: center;
 }
