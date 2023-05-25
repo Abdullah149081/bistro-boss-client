@@ -4,7 +4,7 @@ import featured from "../../../assets/home/featured.jpg";
 
 const Featured = () => {
   return (
-    <div className="bg-[url('assets/home/featured.jpg')] min-h-screen bg-no-repeat relative">
+    <div className="bg-[url('assets/home/featured.jpg')] min-h-screen bg-no-repeat relative bg-fixed">
       <div className="bg-black absolute inset-0 bg-opacity-70 -z-0" />
       <div className="boss-container  relative">
         <Title>
