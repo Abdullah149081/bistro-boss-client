@@ -1,7 +1,7 @@
-import React from "react";
 import Banner from "../Banner/Banner";
 import Boss from "../Boss/Boss";
 import Category from "../Category/Category";
+import Featured from "../Featured/Featured";
 import Menu from "../Menu/Menu";
 
 const Home = () => {
@@ -11,6 +11,7 @@ const Home = () => {
       <Category />
       <Boss />
       <Menu />
+      <Featured />
     </div>
   );
 };
