@@ -28,19 +28,24 @@ const Category = () => {
         className="mySwiper"
       >
         <SwiperSlide>
-          <img src={slide1} alt="" />
+          <img className="relative" src={slide1} alt="" />
+          <h3 className="absolute bottom-5 md:bottom-10 inset-x-0 text-xs md:text-3xl text-center text-white uppercase">Salads</h3>
         </SwiperSlide>
         <SwiperSlide>
           <img src={slide2} alt="" />
+          <h3 className="absolute bottom-5 md:bottom-10 inset-x-0 text-xs md:text-3xl text-center text-white uppercase">pizzas</h3>
         </SwiperSlide>
         <SwiperSlide>
           <img src={slide3} alt="" />
+          <h3 className="absolute bottom-5 md:bottom-10 inset-x-0 text-xs md:text-3xl text-center text-white uppercase">Soups</h3>
         </SwiperSlide>
         <SwiperSlide>
           <img src={slide4} alt="" />
+          <h3 className="absolute bottom-5 md:bottom-10 inset-x-0 text-xs md:text-3xl text-center text-white uppercase">desserts</h3>
         </SwiperSlide>
         <SwiperSlide>
           <img src={slide5} alt="" />
+          <h3 className="absolute bottom-5 md:bottom-10 inset-x-0 text-xs md:text-3xl text-center text-white uppercase">Salads</h3>
         </SwiperSlide>
       </Swiper>
     </div>
