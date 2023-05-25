@@ -1,14 +1,32 @@
-import React from "react";
+import { useEffect, useState } from "react";
 import Title from "../../../Components/SectionTitle/Title";
+import MenuItem from "../../Shared/MenuItem/MenuItem";
 
 const Menu = () => {
+  const [menu, setMenu] = useState([]);
+
+  useEffect(() => {
+    fetch("menu.json")
+      .then((res) => res.json())
+      .then((data) => {
+        const popularItems = data.filter((item) => item.category === "popular");
+        setMenu(popularItems);
+      });
+  }, []);
+
   return (
-    <div className="boss-container">
+    <section className="boss-container">
       <Title>
         <span>---Check it out---</span>
         <span>FROM OUR MENU</span>
       </Title>
-    </div>
+
+      <div className="grid lg:grid-cols-2 gap-6 mt-12">
+        {menu.map((item) => (
+          <MenuItem key={item._id} item={item} />
+        ))}
+      </div>
+    </section>
   );
 };
 

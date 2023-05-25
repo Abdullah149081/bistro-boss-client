@@ -3,7 +3,7 @@ import React from "react";
 const Boss = () => {
   return (
     <div className="boss-container">
-      <div className="bg-[url('assets/home/chef-service.jpg')] boss-container bg-no-repeat bg-cover ">
+      <div className="bg-[url('assets/home/chef-service.jpg')] boss-container bg-no-repeat">
         <div className="bg-white rounded-md">
           <div className="text-center h-96 flex flex-col justify-center items-center ">
             <div className="space-y-4 w-3/4 lg:w-1/2 mx-auto">
