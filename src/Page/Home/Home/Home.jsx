@@ -15,7 +15,7 @@ const Home = () => {
       <Banner />
       <Category />
       <Boss />
-      <Menu />
+      <Menu subTitle="---From 11:00am to 10:00pm---" title="ORDER ONLINE" btnBoss="View Full Menu" />
       <Featured />
       <Testimonials />
     </div>

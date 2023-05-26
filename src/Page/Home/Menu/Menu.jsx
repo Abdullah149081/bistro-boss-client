@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import Title from "../../../Components/SectionTitle/Title";
 import MenuItem from "../../Shared/MenuItem/MenuItem";
 
-const Menu = () => {
+const Menu = ({ subTitle, title, btnBoss }) => {
   const [menu, setMenu] = useState([]);
 
   useEffect(() => {
@@ -17,8 +17,8 @@ const Menu = () => {
   return (
     <section className="boss-container">
       <Title>
-        <span>---Check it out---</span>
-        <span>FROM OUR MENU</span>
+        {subTitle && <span>{subTitle}</span>}
+        {title && <span>{title}</span>}
       </Title>
 
       <div className="grid lg:grid-cols-2 gap-6 mt-12">
@@ -26,11 +26,13 @@ const Menu = () => {
           <MenuItem key={item._id} item={item} />
         ))}
       </div>
-      <div className="text-center mt-12">
-        <button type="button" className="btn btn-boss  text-black">
-          View Full Menu
-        </button>
-      </div>
+      {btnBoss && (
+        <div className="text-center mt-12">
+          <button type="button" className="btn btn-boss  text-black">
+            {btnBoss}
+          </button>
+        </div>
+      )}
     </section>
   );
 };

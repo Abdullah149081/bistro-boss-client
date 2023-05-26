@@ -1,7 +1,6 @@
 import React from "react";
 
 const MenuBanner = ({ children }) => {
-  console.log();
   return (
     <div className={`bg-[url('assets/menu/${children[0].props.children}')] bg-fixed`}>
       <div className="boss-container  ">
