@@ -1,3 +1,4 @@
+/* eslint-disable comma-dangle */
 import React, { useState } from "react";
 import { Helmet } from "react-helmet-async";
 import { useParams } from "react-router-dom";
@@ -11,10 +12,12 @@ const OurShop = () => {
   const { category } = useParams();
   const initialIndex = categories.indexOf(category);
   const [activeTab, setActiveTab] = useState(initialIndex);
-
   const [menu] = useMenu();
 
-  const items = menu.filter((item) => item.category === activeTab);
+  const items = menu.filter(
+    (item) => item.category === ((activeTab === 0 && "salad") || (activeTab === 1 && "pizza") || (activeTab === 2 && "soup") || (activeTab === 3 && "dessert") || (activeTab === 4 && "drinks"))
+  );
+
   const handleSelectTab = (tabName) => {
     setActiveTab(tabName);
   };
