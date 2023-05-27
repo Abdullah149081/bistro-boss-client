@@ -1,9 +1,13 @@
 import React from "react";
+import { Helmet } from "react-helmet-async";
 
 const FoodCard = ({ item }) => {
   const { image, name, recipe, price } = item || {};
   return (
     <div className="card  bg-[#E8E8E8] rounded-md">
+      <Helmet>
+        <title>Bistro Boss | {name}</title>
+      </Helmet>
       <figure className=" border-t w-full relative">
         <img src={image} alt="Shoes" className="  w-full" />
         <span className="absolute bg-gray-950 text-white font-bold px-4 py-2 top-4 right-4 rounded-sm">${price}</span>

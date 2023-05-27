@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { Helmet } from "react-helmet-async";
 import { useParams } from "react-router-dom";
 import FoodCard from "../../../Components/FoodCard/FoodCard";
 import MenuBanner from "../../../Components/MenuBanner/MenuBanner";
@@ -6,7 +7,7 @@ import useMenu from "../../../Hooks/useMenu";
 import banner2 from "../../../assets/shop/banner2.jpg";
 
 const OurShop = () => {
-  const categories = ["salad", "pizza", "shop", "dessert", "drinks"];
+  const categories = ["salad", "pizza", "soup", "dessert", "drinks"];
   const { category } = useParams();
   const initialIndex = categories.indexOf(category);
   const [activeTab, setActiveTab] = useState(initialIndex);
@@ -19,6 +20,11 @@ const OurShop = () => {
   };
   return (
     <div>
+      <Helmet>
+        <title>
+          {`Bistro Boss | Shop - ${(activeTab === 0 && "Salad") || (activeTab === 1 && "Pizza") || (activeTab === 2 && "Soup") || (activeTab === 3 && "Dessert") || (activeTab === 4 && "Drinks")}  `}
+        </title>
+      </Helmet>
       <MenuBanner img={banner2} title="OUR SHOP" subTitle="Would you like to try a dish?" />
       <div className="boss-container">
         <div className="tabs  justify-center">
