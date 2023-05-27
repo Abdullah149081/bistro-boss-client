@@ -12,7 +12,7 @@ const OurShop = () => {
   const { category } = useParams();
   const initialIndex = categories.indexOf(category);
   const [activeTab, setActiveTab] = useState(initialIndex);
-  const [menu] = useMenu();
+  const [menu, loading] = useMenu();
 
   const items = menu.filter(
     (item) => item.category === ((activeTab === 0 && "salad") || (activeTab === 1 && "pizza") || (activeTab === 2 && "soup") || (activeTab === 3 && "dessert") || (activeTab === 4 && "drinks"))
@@ -47,11 +47,18 @@ const OurShop = () => {
             drinks
           </button>
         </div>
-        <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 mt-12">
-          {items.map((item) => (
-            <FoodCard key={item} item={item} />
-          ))}
-        </div>
+
+        {loading ? (
+          <div className="flex justify-center mt-4 items-center">
+            <progress className="progress w-56 " />;
+          </div>
+        ) : (
+          <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 mt-12">
+            {items.map((item) => (
+              <FoodCard key={item} item={item} />
+            ))}
+          </div>
+        )}
       </div>
     </div>
   );
