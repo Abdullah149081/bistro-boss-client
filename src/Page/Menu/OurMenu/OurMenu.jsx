@@ -1,12 +1,13 @@
 /* eslint-disable react/no-unescaped-entities */
 import React from "react";
+import banner3 from "../../../assets/menu/banner3.jpg";
 import Menu from "../../Home/Menu/Menu";
 import MenuBanner from "../MenuBanner/MenuBanner";
 
 const OurMenu = () => {
   return (
     <div>
-      <MenuBanner>
+      <MenuBanner img={banner3} title="OUR MENU" subTitle="Would you like to try a dish?">
         <span>banner3.jpg</span>
         <span>OUR MENU</span>
         <span>Would you like to try a dish?</span>
