@@ -18,7 +18,7 @@ export default function ErrorPage() {
           <h2 className="text-2xl font-bold uppercase font-cinzel">Oops! Page Not Be Found</h2>
           <p className="font-medium text-lg text-error">{error?.status || error?.message}</p>
           <Link className="inline-block" to="/">
-            <button type="button" className="btn btn-toy">
+            <button type="button" className="btn btn-boss text-black">
               Back to homepage
             </button>
           </Link>
