@@ -8,11 +8,6 @@ const OurShop = () => {
   const [activeTab, setActiveTab] = useState("salad");
   const [menu] = useMenu();
   const items = menu.filter((item) => item.category === activeTab);
-  //   const soup = menu.filter((item) => item.category === "soup");
-  //   const salad = menu.filter((item) => item.category === "salad");
-  //   const pizza = menu.filter((item) => item.category === "pizza");
-  //   const offered = menu.filter((item) => item.category === "offered");
-
   const handleSelectTab = (tabName) => {
     setActiveTab(tabName);
   };
