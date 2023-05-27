@@ -1,5 +1,4 @@
 /* eslint-disable react/no-unescaped-entities */
-import React from "react";
 import Menu from "../../../Components/Menu/Menu";
 import MenuCard from "../../../Components/MenuCard/MenuCard";
 import useMenu from "../../../Hooks/useMenu";
