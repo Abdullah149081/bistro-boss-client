@@ -1,11 +1,7 @@
-import Title from "../../../Components/SectionTitle/Title";
-import useMenu from "../../../Hooks/useMenu";
-import MenuItem from "../../Shared/MenuItem/MenuItem";
+import MenuItem from "../../Page/Shared/MenuItem/MenuItem";
+import Title from "../SectionTitle/Title";
 
-const Menu = ({ subTitle, title, btnBoss }) => {
-  const [menu] = useMenu();
-  const popular = menu.filter((item) => item.category === "popular");
-
+const Menu = ({ subTitle, title, btnBoss, items }) => {
   return (
     <section className="boss-container">
       <Title>
@@ -14,7 +10,7 @@ const Menu = ({ subTitle, title, btnBoss }) => {
       </Title>
 
       <div className="grid lg:grid-cols-2 gap-6 mt-12">
-        {popular.map((item) => (
+        {items?.map((item) => (
           <MenuItem key={item._id} item={item} />
         ))}
       </div>
