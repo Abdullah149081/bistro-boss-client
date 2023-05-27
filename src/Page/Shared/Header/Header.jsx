@@ -20,7 +20,7 @@ const Header = () => {
         <ActiveLink to="/menu">Our menu</ActiveLink>
       </li>
       <li>
-        <ActiveLink to="/shop">Our shop</ActiveLink>
+        <ActiveLink to="/shop/salad">Our shop</ActiveLink>
       </li>
     </>
   );

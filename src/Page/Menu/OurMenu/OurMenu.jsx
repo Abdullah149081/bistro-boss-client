@@ -22,7 +22,7 @@ const OurMenu = () => {
     <div>
       <MenuBanner img={banner3} title="OUR MENU" subTitle="Would you like to try a dish?" />
       <div className="boss-container">
-        <Menu subTitle="---Don't miss---" title="TODAY'S OFFER" btnBoss="ORDER YOUR FAVOURITE FOOD" items={offered} />
+        <Menu subTitle="---Don't miss---" title="TODAY'S OFFER" items={offered} />
       </div>
       <MenuCard
         img={dessertImg}
@@ -30,7 +30,7 @@ const OurMenu = () => {
         subTitle="Lorem Ipsum has been the industry’s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book."
       />
       <div className="boss-container">
-        <Menu btnBoss="ORDER YOUR FAVOURITE FOOD" items={dessert} />
+        <Menu category="dessert" btnBoss="ORDER YOUR FAVOURITE FOOD" items={dessert} />
       </div>
       <MenuCard
         img={pizzaImg}
@@ -38,7 +38,7 @@ const OurMenu = () => {
         subTitle="Lorem Ipsum has been the industry’s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book."
       />
       <div className="boss-container">
-        <Menu btnBoss="ORDER YOUR FAVOURITE FOOD" items={pizza} />
+        <Menu category="pizza" btnBoss="ORDER YOUR FAVOURITE FOOD" items={pizza} />
       </div>
       <MenuCard
         img={saladBg}
@@ -46,7 +46,7 @@ const OurMenu = () => {
         subTitle="Lorem Ipsum has been the industry’s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book."
       />
       <div className="boss-container">
-        <Menu btnBoss="ORDER YOUR FAVOURITE FOOD" items={salad} />
+        <Menu category="salad" btnBoss="ORDER YOUR FAVOURITE FOOD" items={salad} />
       </div>
       <MenuCard
         img={soupBg}
@@ -54,7 +54,7 @@ const OurMenu = () => {
         subTitle="Lorem Ipsum has been the industry’s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book."
       />
       <div className="boss-container">
-        <Menu btnBoss="ORDER YOUR FAVOURITE FOOD" items={soup} />
+        <Menu category="soup" btnBoss="ORDER YOUR FAVOURITE FOOD" items={soup} />
       </div>
 
       {/* end */}

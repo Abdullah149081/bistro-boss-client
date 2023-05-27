@@ -1,12 +1,18 @@
 import React, { useState } from "react";
+import { useParams } from "react-router-dom";
 import FoodCard from "../../../Components/FoodCard/FoodCard";
 import MenuBanner from "../../../Components/MenuBanner/MenuBanner";
 import useMenu from "../../../Hooks/useMenu";
 import banner2 from "../../../assets/shop/banner2.jpg";
 
 const OurShop = () => {
-  const [activeTab, setActiveTab] = useState("salad");
+  const categories = ["salad", "pizza", "shop", "dessert", "drinks"];
+  const { category } = useParams();
+  const initialIndex = categories.indexOf(category);
+  const [activeTab, setActiveTab] = useState(initialIndex);
+
   const [menu] = useMenu();
+
   const items = menu.filter((item) => item.category === activeTab);
   const handleSelectTab = (tabName) => {
     setActiveTab(tabName);
@@ -16,19 +22,19 @@ const OurShop = () => {
       <MenuBanner img={banner2} title="OUR SHOP" subTitle="Would you like to try a dish?" />
       <div className="boss-container">
         <div className="tabs  justify-center">
-          <button onClick={() => handleSelectTab("salad")} className={`tab  ${activeTab === "salad" ? "tab-active" : "tab-default"}`} type="button">
+          <button onClick={() => handleSelectTab(0)} className={`tab  ${activeTab === 0 ? "tab-active" : "tab-default"}`} type="button">
             Salad
           </button>
-          <button onClick={() => handleSelectTab("pizza")} className={`tab  ${activeTab === "pizza" ? "tab-active" : "tab-default"}`} type="button">
+          <button onClick={() => handleSelectTab(1)} className={`tab  ${activeTab === 1 ? "tab-active" : "tab-default"}`} type="button">
             pizza
           </button>
-          <button onClick={() => handleSelectTab("soup")} className={`tab  ${activeTab === "soup" ? "tab-active" : "tab-default"}`} type="button">
+          <button onClick={() => handleSelectTab(2)} className={`tab  ${activeTab === 2 ? "tab-active" : "tab-default"}`} type="button">
             soups
           </button>
-          <button onClick={() => handleSelectTab("dessert")} className={`tab  ${activeTab === "dessert" ? "tab-active" : "tab-default"}`} type="button">
+          <button onClick={() => handleSelectTab(3)} className={`tab  ${activeTab === 3 ? "tab-active" : "tab-default"}`} type="button">
             dessert
           </button>
-          <button onClick={() => handleSelectTab("drinks")} className={`tab  ${activeTab === "drinks" ? "tab-active" : "tab-default"}`} type="button">
+          <button onClick={() => handleSelectTab(4)} className={`tab  ${activeTab === 4 ? "tab-active" : "tab-default"}`} type="button">
             drinks
           </button>
         </div>

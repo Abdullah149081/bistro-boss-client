@@ -1,7 +1,8 @@
+import { Link } from "react-router-dom";
 import MenuItem from "../../Page/Shared/MenuItem/MenuItem";
 import Title from "../SectionTitle/Title";
 
-const Menu = ({ subTitle, title, btnBoss, items }) => {
+const Menu = ({ subTitle, title, btnBoss, items, category }) => {
   return (
     <section className="boss-container">
       <Title>
@@ -16,9 +17,11 @@ const Menu = ({ subTitle, title, btnBoss, items }) => {
       </div>
       {btnBoss && (
         <div className="text-center mt-12">
-          <button type="button" className="btn btn-boss  text-black">
-            {btnBoss}
-          </button>
+          <Link to={`/shop/${category}`}>
+            <button type="button" className="btn btn-boss  text-black">
+              {btnBoss}
+            </button>
+          </Link>
         </div>
       )}
     </section>
