@@ -1,10 +1,16 @@
 /* eslint-disable jsx-a11y/no-noninteractive-tabindex */
 import { Button } from "flowbite-react";
-import React from "react";
+import React, { useContext } from "react";
+import { AuthContext } from "../../../providers/AuthProviders";
 import Banner from "../../Home/Banner/Banner";
 import ActiveLink from "./ActiveLink";
 
 const Header = () => {
+  const { user, logOut } = useContext(AuthContext);
+
+  const handleLogOut = () => {
+    logOut();
+  };
   const navbar = (
     <>
       <li>
@@ -22,9 +28,11 @@ const Header = () => {
       <li>
         <ActiveLink to="/shop/salad">Our shop</ActiveLink>
       </li>
-      <li>
-        <ActiveLink to="/login">Login</ActiveLink>
-      </li>
+      {!user && (
+        <li>
+          <ActiveLink to="/login">Login</ActiveLink>
+        </li>
+      )}
     </>
   );
 
@@ -53,11 +61,13 @@ const Header = () => {
               <div className="navbar-center hidden lg:flex">
                 <ul className="menu menu-horizontal px-1 boss-navbar">{navbar}</ul>
               </div>
-              <div className="navbar-end">
-                <Button className="w-[110px] lg:w-full" color="gray" pill>
-                  SIGN OUT
-                </Button>
-              </div>
+              {user && (
+                <div className="navbar-end">
+                  <Button onClick={handleLogOut} className="w-[110px] lg:w-full" color="gray" pill>
+                    SIGN OUT
+                  </Button>
+                </div>
+              )}
             </div>
           </div>
         </div>
