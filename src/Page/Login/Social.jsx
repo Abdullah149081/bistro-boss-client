@@ -1,19 +1,20 @@
-import React from "react";
+import React, { useContext } from "react";
 import { FaFacebookF, FaGithub, FaGoogle } from "react-icons/fa";
 import { Link, useLocation, useNavigate } from "react-router-dom";
+import { AuthContext } from "../../providers/AuthProviders";
 
 const Social = () => {
-  //   const { googleSignIn } = useContext(AuthContext);
+    const { googleSignIn } = useContext(AuthContext);
   const navigate = useNavigate();
   const location = useLocation();
   const from = location.state?.from?.pathname || "/";
 
   const handlerGoogle = () => {
-    // googleSignIn()
-    //   .then(() => {
-    //     navigate(from, { replace: true });
-    //   })
-    //   .catch(() => {});
+    googleSignIn()
+      .then(() => {
+        navigate(from, { replace: true });
+      })
+      .catch(() => {});
   };
   return (
     <div className="text-center mt-4  font-bold">
