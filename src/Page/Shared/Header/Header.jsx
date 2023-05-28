@@ -22,6 +22,9 @@ const Header = () => {
       <li>
         <ActiveLink to="/shop/salad">Our shop</ActiveLink>
       </li>
+      <li>
+        <ActiveLink to="/login">Login</ActiveLink>
+      </li>
     </>
   );
 
