@@ -1,17 +1,38 @@
+import { useEffect, useRef, useState } from "react";
 import { Helmet } from "react-helmet-async";
 import { Link } from "react-router-dom";
+import { LoadCanvasTemplate, loadCaptchaEnginge, validateCaptcha } from "react-simple-captcha";
 import bannerLogin from "../../assets/others/authentication.png";
 import loginPic from "../../assets/others/authentication2.png";
 import Social from "./Social";
 
 const Login = () => {
+  const [disabled, setDisabled] = useState(true);
+  const [errorCaptcha, setErrorCaptcha] = useState("");
+  const captchaRef = useRef(null);
+  useEffect(() => {
+    loadCaptchaEnginge(6);
+  }, []);
+
   const handleLogin = (e) => {
     e.preventDefault();
 
     const form = e.target;
     const email = form.email.value;
     const password = form.password.value;
+
     console.log(email, password);
+  };
+
+  const handleCaptcha = () => {
+    const { value } = captchaRef.current;
+    if (validateCaptcha(value)) {
+      setErrorCaptcha("");
+      setDisabled(false);
+    } else {
+      setDisabled(true);
+      setErrorCaptcha("Captcha Does Not Match");
+    }
   };
 
   return (
@@ -46,20 +67,20 @@ const Login = () => {
                 </label>
               </div>
               <div className="form-control">
-                <label className="label" />
-                <input type="text" placeholder="" className="input input-bordered " />
                 <label className="label">
                   <button type="button" className="label-text-alt  text-base font-bold text-[#5D5FEF] ">
-                    Reload Captcha
+                    <LoadCanvasTemplate />
                   </button>
                 </label>
+                <input ref={captchaRef} type="text" placeholder="Type here" name="captcha" className="input input-bordered " />
+                {errorCaptcha && <span className="text-error font-bold text-xs mt-2">{errorCaptcha}</span>}
+                <button onClick={handleCaptcha} className="btn mt-4 btn-outline btn-info " type="button">
+                  Validate Captcha
+                </button>
               </div>
-              <div className="form-control">
-                <label className="label" />
-                <input type="text" placeholder="Type here" name="captcha" className="input input-bordered " />
-              </div>
+
               <div className="form-control mt-6">
-                <button type="submit" className="btn bg-[#D1A054B2] border-0">
+                <button disabled={disabled} type="submit" className="btn bg-[#D1A054B2] border-0">
                   Login
                 </button>
               </div>
