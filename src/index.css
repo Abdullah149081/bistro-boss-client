@@ -20,7 +20,7 @@
 }
 
 .btn-boss {
-  @apply bg-transparent text-xl border-0  border-b-4;
+  @apply bg-transparent text-xl border-0  border-b-4 hover:bg-transparent hover:border-[#bb8506];
 }
 .tab-active {
   @apply text-[#BB8506] decoration-4 underline-offset-8 font-bold text-2xl underline decoration-[#BB8506] uppercase;

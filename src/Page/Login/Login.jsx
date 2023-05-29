@@ -1,27 +1,42 @@
-import { useEffect, useRef, useState } from "react";
+import { useContext, useEffect, useRef, useState } from "react";
 import { Helmet } from "react-helmet-async";
-import { Link } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import { LoadCanvasTemplate, loadCaptchaEnginge, validateCaptcha } from "react-simple-captcha";
 import bannerLogin from "../../assets/others/authentication.png";
 import loginPic from "../../assets/others/authentication2.png";
 import Social from "./Social";
 
+import { AuthContext } from "../../providers/AuthProviders";
+
 const Login = () => {
+  const { signIn } = useContext(AuthContext);
   const [disabled, setDisabled] = useState(true);
+  const navigate = useNavigate();
+  const location = useLocation();
+
   const [errorCaptcha, setErrorCaptcha] = useState("");
+  const [error, setError] = useState("");
   const captchaRef = useRef(null);
+  const from = location.state?.from?.pathname || "/";
   useEffect(() => {
     loadCaptchaEnginge(6);
   }, []);
 
   const handleLogin = (e) => {
     e.preventDefault();
+    setError("");
 
     const form = e.target;
     const email = form.email.value;
     const password = form.password.value;
 
-    console.log(email, password);
+    signIn(email, password)
+      .then(() => {
+        navigate(from, { replace: true });
+      })
+      .catch((err) => {
+        setError(err?.message);
+      });
   };
 
   const handleCaptcha = () => {
@@ -78,6 +93,7 @@ const Login = () => {
                   Validate Captcha
                 </button>
               </div>
+              {error && <span className="text-error font-bold text-xs mt-2">{error}</span>}
 
               <div className="form-control mt-6">
                 <button disabled={disabled} type="submit" className="btn bg-[#D1A054B2] border-0">
