@@ -10,7 +10,7 @@ import { AuthContext } from "../../providers/AuthProviders";
 
 const Register = () => {
   const [error, setError] = useState("");
-  const { createUser, logOut } = useContext(AuthContext);
+  const { createUser, logOut, updateUserData } = useContext(AuthContext);
   const navigate = useNavigate();
   const {
     register,
@@ -21,6 +21,7 @@ const Register = () => {
   const onSubmit = (data) => {
     createUser(data.email, data.password)
       .then(() => {
+        updateUserData(data.name, data.photo);
         logOut();
         navigate("/login");
       })
@@ -53,6 +54,13 @@ const Register = () => {
                     </label>
                     <input type="text" placeholder="name" name="name" className="input input-bordered " {...register("name", { required: true })} />
                     {errors.name?.type === "required" && <span className="mt-1 text-sm text-error font-bold">Name is required</span>}
+                  </div>
+                  <div className="form-control">
+                    <label className="label">
+                      <span className="label-text text-base font-bold">Photo Url</span>
+                    </label>
+                    <input type="url" placeholder="Photo Url" className="input input-bordered " {...register("photo", { required: true })} />
+                    {errors.photo?.type === "required" && <span className="mt-1 text-sm text-error font-bold">Photo Url is required</span>}
                   </div>
                   <div className="form-control">
                     <label className="label">

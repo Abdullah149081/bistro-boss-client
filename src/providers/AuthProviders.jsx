@@ -1,4 +1,4 @@
-import { GoogleAuthProvider, createUserWithEmailAndPassword, getAuth, onAuthStateChanged, signInWithEmailAndPassword, signInWithPopup, signOut } from "firebase/auth";
+import { GoogleAuthProvider, createUserWithEmailAndPassword, getAuth, onAuthStateChanged, signInWithEmailAndPassword, signInWithPopup, signOut, updateProfile } from "firebase/auth";
 import React, { createContext, useEffect, useMemo, useState } from "react";
 import app from "../firebase/firebase.config";
 
@@ -19,6 +19,12 @@ const AuthProviders = ({ children }) => {
   const logOut = () => {
     return signOut(auth);
   };
+  const updateUserData = (name, photo) => {
+    return updateProfile(auth.currentUser, {
+      displayName: name,
+      photoURL: photo,
+    });
+  };
 
   useEffect(() => {
     const connection = onAuthStateChanged(auth, (currentUser) => {
@@ -33,7 +39,7 @@ const AuthProviders = ({ children }) => {
     return signInWithPopup(auth, googleProvider);
   };
 
-  const authInfo = useMemo(() => ({ user, createUser, signIn, logOut, loading, googleSignIn }), [loading, user]);
+  const authInfo = useMemo(() => ({ user, createUser, signIn, logOut, loading, googleSignIn, updateUserData }), [loading, user]);
 
   return <AuthContext.Provider value={authInfo}>{children}</AuthContext.Provider>;
 };
