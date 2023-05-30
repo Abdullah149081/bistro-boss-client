@@ -1,7 +1,7 @@
 /* eslint-disable import/no-unresolved */
 /* eslint-disable import/no-absolute-path */
 
-import React, { useContext } from "react";
+import { useContext } from "react";
 import { Outlet, ScrollRestoration, useLocation } from "react-router-dom";
 import Footer from "../Page/Shared/Footer/Footer";
 import Header from "../Page/Shared/Header/Header";
@@ -23,7 +23,7 @@ const Main = () => {
     );
   }
 
-  const noHeaderFooter = location.pathname.includes("login");
+  const noHeaderFooter = location.pathname.includes("login") || location.pathname.includes("sign-up");
   return (
     <div>
       {noHeaderFooter || <Header />}

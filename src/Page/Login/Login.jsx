@@ -46,6 +46,7 @@ const Login = () => {
       setDisabled(false);
     } else {
       setDisabled(true);
+      setError("");
       setErrorCaptcha("Captcha Does Not Match");
     }
   };
