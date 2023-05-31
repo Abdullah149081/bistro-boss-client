@@ -55,7 +55,7 @@ const OurShop = () => {
         ) : (
           <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 mt-12">
             {items.map((item) => (
-              <FoodCard key={item} item={item} />
+              <FoodCard key={item._id} item={item} />
             ))}
           </div>
         )}

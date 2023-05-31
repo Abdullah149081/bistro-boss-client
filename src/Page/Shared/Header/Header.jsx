@@ -1,8 +1,9 @@
 /* eslint-disable jsx-a11y/no-noninteractive-tabindex */
 import { Button } from "flowbite-react";
 import React, { useContext } from "react";
+import { FaShoppingCart } from "react-icons/fa";
+import { Link } from "react-router-dom";
 import { AuthContext } from "../../../providers/AuthProviders";
-import Banner from "../../Home/Banner/Banner";
 import ActiveLink from "./ActiveLink";
 
 const Header = () => {
@@ -33,6 +34,18 @@ const Header = () => {
           <ActiveLink to="/login">Login</ActiveLink>
         </li>
       )}
+
+      <Link to="/">
+        <button
+          type="button"
+          className="relative inline-flex items-center p-3 text-sm font-medium text-center text-white bg-emerald-700 rounded-lg hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
+        >
+          <FaShoppingCart className="w-6 h-6" />
+          <div className="absolute inline-flex items-center justify-center w-7 h-7 text-xs font-bold text-white bg-red-500 border-2 border-white rounded-full -top-2 -right-2 dark:border-gray-900">
+            0
+          </div>
+        </button>
+      </Link>
     </>
   );
 
