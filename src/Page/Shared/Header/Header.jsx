@@ -3,11 +3,13 @@ import { Button } from "flowbite-react";
 import React, { useContext } from "react";
 import { FaShoppingCart } from "react-icons/fa";
 import { Link } from "react-router-dom";
+import useCart from "../../../Hooks/useCart";
 import { AuthContext } from "../../../providers/AuthProviders";
 import ActiveLink from "./ActiveLink";
 
 const Header = () => {
   const { user, logOut } = useContext(AuthContext);
+  const [cart] = useCart();
 
   const handleLogOut = () => {
     logOut();
@@ -42,7 +44,7 @@ const Header = () => {
         >
           <FaShoppingCart className="w-6 h-6" />
           <div className="absolute inline-flex items-center justify-center w-7 h-7 text-xs font-bold text-white bg-red-500 border-2 border-white rounded-full -top-2 -right-2 dark:border-gray-900">
-            0
+            {cart?.length || 0}
           </div>
         </button>
       </Link>
