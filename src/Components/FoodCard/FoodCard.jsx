@@ -1,28 +1,30 @@
 import { useContext } from "react";
-import { useNavigate } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 import Swal from "sweetalert2";
 import { AuthContext } from "../../providers/AuthProviders";
 
 const FoodCard = ({ item }) => {
-  const { image, name, recipe, price } = item || {};
+  const { image, name, recipe, price, _id } = item || {};
   const { user } = useContext(AuthContext);
   const navigate = useNavigate();
+  const location = useLocation();
 
-  const handleAddToCart = (cart) => {
-    if (user) {
+  const handleAddToCart = () => {
+    if (user && user.email) {
+      const orderItem = { menuId: _id, name, image, price, email: user.email };
       fetch("http://localhost:5000/carts", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
         },
-        body: JSON.stringify(cart),
+        body: JSON.stringify(orderItem),
       })
         .then((res) => res.json())
         .then((data) => {
           if (data.insertedId) {
             Swal.fire({
               title: "success",
-              text: "Product Add successfully",
+              text: "Order Add successfully",
               icon: "success",
               confirmButtonText: "Ok",
             });
@@ -30,15 +32,15 @@ const FoodCard = ({ item }) => {
         });
     } else {
       Swal.fire({
-        title: "Are you sure?",
+        title: "Please Login to order the food",
         icon: "warning",
         showCancelButton: true,
         confirmButtonColor: "#3085d6",
         cancelButtonColor: "#d33",
-        confirmButtonText: "Yes, Login it!",
+        confirmButtonText: "Yes, Login now",
       }).then((result) => {
         if (result.isConfirmed) {
-          navigate("/login");
+          navigate("/login", { state: { from: location } });
         }
       });
     }
@@ -54,7 +56,7 @@ const FoodCard = ({ item }) => {
         <h2 className="card-title text-2xl text-black">{name}</h2>
         <p>{recipe}</p>
         <div className="card-actions">
-          <button onClick={() => handleAddToCart(item)} type="button" className="btn btn-boss border-[#BB8506] text-[#BB8506]">
+          <button onClick={handleAddToCart} type="button" className="btn btn-boss border-[#BB8506] text-[#BB8506]">
             add to cart
           </button>
         </div>
