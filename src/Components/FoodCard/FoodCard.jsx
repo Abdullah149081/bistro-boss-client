@@ -1,8 +1,47 @@
-const FoodCard = ({ item }) => {
-  const { image, name, recipe, price, _id } = item || {};
+import { useContext } from "react";
+import { useNavigate } from "react-router-dom";
+import Swal from "sweetalert2";
+import { AuthContext } from "../../providers/AuthProviders";
 
-  const handleAddToCart = (id) => {
-    console.log(item);
+const FoodCard = ({ item }) => {
+  const { image, name, recipe, price } = item || {};
+  const { user } = useContext(AuthContext);
+  const navigate = useNavigate();
+
+  const handleAddToCart = (cart) => {
+    if (user) {
+      fetch("http://localhost:5000/carts", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(cart),
+      })
+        .then((res) => res.json())
+        .then((data) => {
+          if (data.insertedId) {
+            Swal.fire({
+              title: "success",
+              text: "Product Add successfully",
+              icon: "success",
+              confirmButtonText: "Ok",
+            });
+          }
+        });
+    } else {
+      Swal.fire({
+        title: "Are you sure?",
+        icon: "warning",
+        showCancelButton: true,
+        confirmButtonColor: "#3085d6",
+        cancelButtonColor: "#d33",
+        confirmButtonText: "Yes, Login it!",
+      }).then((result) => {
+        if (result.isConfirmed) {
+          navigate("/login");
+        }
+      });
+    }
   };
 
   return (
@@ -15,7 +54,7 @@ const FoodCard = ({ item }) => {
         <h2 className="card-title text-2xl text-black">{name}</h2>
         <p>{recipe}</p>
         <div className="card-actions">
-          <button onClick={() => handleAddToCart(_id)} type="button" className="btn btn-boss border-[#BB8506] text-[#BB8506]">
+          <button onClick={() => handleAddToCart(item)} type="button" className="btn btn-boss border-[#BB8506] text-[#BB8506]">
             add to cart
           </button>
         </div>
