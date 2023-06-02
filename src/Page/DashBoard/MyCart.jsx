@@ -1,5 +1,6 @@
 import React from "react";
 import { Helmet } from "react-helmet-async";
+import { FaTrashAlt } from "react-icons/fa";
 import Title from "../../Components/SectionTitle/Title";
 import useCart from "../../Hooks/useCart";
 
@@ -26,8 +27,8 @@ const MyCart = () => {
           </div>
 
           <div className="overflow-x-auto ">
-            <table className="table w-full mt-10 text-center z-10  ">
-              <thead className=" ">
+            <table className="table w-full mt-10 text-center  table-pin-rows">
+              <thead>
                 <tr>
                   <th className="bg-[#D1A054] text-white tracking-wide">#</th>
                   <th className="bg-[#D1A054] text-white tracking-wide">ITEM IMAGE</th>
@@ -37,7 +38,7 @@ const MyCart = () => {
                 </tr>
               </thead>
               <tbody>
-                {cart.slice(2, 6).map((item, idx) => (
+                {cart.slice(2, 10).map((item, idx) => (
                   <tr key={item._id}>
                     <td>{idx + 1}</td>
                     <td>
@@ -52,8 +53,8 @@ const MyCart = () => {
                     <td>{item.name}</td>
                     <td>${item.price}</td>
                     <th>
-                      <button type="button" className="btn btn-ghost btn-xs">
-                        details
+                      <button type="button" className="btn bg-red-600 border-0 ">
+                        <FaTrashAlt className="w-5 h-5" />
                       </button>
                     </th>
                   </tr>
