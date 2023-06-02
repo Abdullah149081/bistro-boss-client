@@ -37,7 +37,7 @@ const Header = () => {
         </li>
       )}
 
-      <Link to="/">
+      <Link to="/dashboard/myCart">
         <button
           type="button"
           className="relative inline-flex items-center p-3 text-sm font-medium text-center text-white bg-emerald-700 rounded-lg hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
@@ -77,7 +77,7 @@ const Header = () => {
                 <ul className="menu menu-horizontal px-1 boss-navbar">{navbar}</ul>
               </div>
               {user && (
-                <div className="navbar-end">
+                <div className="navbar-end ml-2">
                   <Button onClick={handleLogOut} className="w-[110px] lg:w-full" color="gray" pill>
                     SIGN OUT
                   </Button>
