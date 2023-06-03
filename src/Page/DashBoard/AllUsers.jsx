@@ -2,6 +2,7 @@ import { useQuery } from "@tanstack/react-query";
 
 import { Helmet } from "react-helmet-async";
 import { FaTrashAlt, FaUserShield, FaUsers } from "react-icons/fa";
+import Swal from "sweetalert2";
 import Title from "../../Components/SectionTitle/Title";
 
 const AllUsers = () => {
@@ -9,7 +10,47 @@ const AllUsers = () => {
     const res = await fetch("http://localhost:5000/users");
     return res.json();
   });
-  const handleAdmin = (admin) => {};
+  const handleAdmin = (user) => {
+    fetch(`http://localhost:5000/users/admin/${user._id}`, {
+      method: "PATCH",
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        if (data.modifiedCount) {
+          Swal.fire({
+            title: "success",
+            text: `${user.name} is now Admin`,
+            icon: "success",
+            confirmButtonText: "Cool",
+          });
+          refetch();
+        }
+      });
+  };
+  const handleDelete = (id) => {
+    Swal.fire({
+      title: "Are you sure?",
+      text: "You won't be able to revert this!",
+      icon: "warning",
+      showCancelButton: true,
+      confirmButtonColor: "#3085d6",
+      cancelButtonColor: "#d33",
+      confirmButtonText: "Yes, delete it!",
+    }).then((result) => {
+      if (result.isConfirmed) {
+        fetch(`http://localhost:5000/users/${id}`, {
+          method: "DELETE",
+        })
+          .then((res) => res.json())
+          .then((data) => {
+            if (data.deletedCount > 0) {
+              Swal.fire("Deleted!", "This users successfully has been remove", "success");
+            }
+            refetch();
+          });
+      }
+    });
+  };
 
   return (
     <div className="w-full">
@@ -45,12 +86,12 @@ const AllUsers = () => {
                       <td className="text-[#737373] text-lg ">{user.name}</td>
                       <td className="text-[#737373] text-lg ">{user.email}</td>
                       <td>
-                        <button onClick={() => handleAdmin(user._id)} type="button" className="btn  bg-[#D1A054] border-0 ">
+                        <button onClick={() => handleAdmin(user)} type="button" className="btn  bg-[#D1A054] border-0 ">
                           {user.roll === "admin" ? <FaUserShield className="w-5 h-5" /> : <FaUsers className="w-5 h-5" />}
                         </button>
                       </td>
                       <th>
-                        <button type="button" className="btn bg-red-600 border-0 ">
+                        <button onClick={() => handleDelete(user._id)} type="button" className="btn bg-red-600 border-0 ">
                           <FaTrashAlt className="w-5 h-5" />
                         </button>
                       </th>
