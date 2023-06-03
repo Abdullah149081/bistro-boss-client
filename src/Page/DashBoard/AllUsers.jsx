@@ -1,7 +1,7 @@
 import { useQuery } from "@tanstack/react-query";
 import React from "react";
 import { Helmet } from "react-helmet-async";
-import { FaTrashAlt, FaUser, FaUsers } from "react-icons/fa";
+import { FaTrashAlt, FaUsers } from "react-icons/fa";
 import Title from "../../Components/SectionTitle/Title";
 
 const AllUsers = () => {
