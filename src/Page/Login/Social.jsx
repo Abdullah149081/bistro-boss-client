@@ -4,15 +4,29 @@ import { Link, useLocation, useNavigate } from "react-router-dom";
 import { AuthContext } from "../../providers/AuthProviders";
 
 const Social = () => {
-    const { googleSignIn } = useContext(AuthContext);
+  const { googleSignIn } = useContext(AuthContext);
   const navigate = useNavigate();
   const location = useLocation();
   const from = location.state?.from?.pathname || "/";
 
   const handlerGoogle = () => {
     googleSignIn()
-      .then(() => {
-        navigate(from, { replace: true });
+      .then((result) => {
+        const logUser = result.user;
+        const saveUser = { name: logUser.displayName, email: logUser.email };
+        fetch("http://localhost:5000/users", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify(saveUser),
+        })
+          .then((res) => res.json())
+          .then((user) => {
+            if (user) {
+              navigate(from, { replace: true });
+            }
+          });
       })
       .catch(() => {});
   };
