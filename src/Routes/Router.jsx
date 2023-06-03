@@ -8,6 +8,7 @@ import ErrorPage from "../Page/Shared/ErrorPage/ErrorPage";
 import Shop from "../Page/Shop/Shop/Shop";
 import Dashboard from "../layout/Dashboard";
 import Main from "../layout/Main";
+import PrivateRoutes from "./PrivateRoutes";
 
 const router = createBrowserRouter([
   {
@@ -39,7 +40,11 @@ const router = createBrowserRouter([
   },
   {
     path: "dashboard",
-    element: <Dashboard />,
+    element: (
+      <PrivateRoutes>
+        <Dashboard />
+      </PrivateRoutes>
+    ),
     children: [
       {
         path: "myCart",

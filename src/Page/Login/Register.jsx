@@ -21,9 +21,22 @@ const Register = () => {
   const onSubmit = (data) => {
     createUser(data.email, data.password)
       .then(() => {
-        updateUserData(data.name, data.photo);
-        logOut();
-        navigate("/login");
+        const saveUser = { name: data.name, email: data.email };
+        fetch("http://localhost:5000/users", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify(saveUser),
+        })
+          .then((res) => res.json())
+          .then((user) => {
+            if (user.insertedId) {
+              updateUserData(data.name, data.photo);
+              logOut();
+              navigate("/login");
+            }
+          });
       })
       .catch((err) => {
         setError(err?.message);

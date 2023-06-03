@@ -1,9 +1,11 @@
+import { useContext } from "react";
 import { FaBars, FaCalendarAlt, FaHome, FaShopify, FaShoppingCart, FaWallet } from "react-icons/fa";
 import { NavLink, Outlet } from "react-router-dom";
 import useCart from "../Hooks/useCart";
 
 const Dashboard = () => {
   const [cart] = useCart();
+
   return (
     <div className="drawer drawer-mobile ">
       <input id="my-drawer-2" type="checkbox" className="drawer-toggle" />

@@ -1,10 +1,24 @@
+/* eslint-disable import/no-unresolved */
+/* eslint-disable import/no-absolute-path */
 import { useContext } from "react";
 import { Navigate, useLocation } from "react-router-dom";
 import { AuthContext } from "../providers/AuthProviders";
+import logo from "/logo.png";
 
 const PrivateRoutes = ({ children }) => {
-  const { user } = useContext(AuthContext);
+  const { user, loading } = useContext(AuthContext);
   const location = useLocation();
+
+  if (loading) {
+    return (
+      <div className="flex flex-col min-h-screen justify-center mt-4 items-center">
+        <div>
+          <img src={logo} alt="" />
+        </div>
+        <h2 className="text-4xl font-bold mt-4 font-cinzel animate-pulse">Bistro Boss</h2>
+      </div>
+    );
+  }
 
   if (user) {
     return children;
