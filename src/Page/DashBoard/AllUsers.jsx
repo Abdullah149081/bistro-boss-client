@@ -1,7 +1,7 @@
 import { useQuery } from "@tanstack/react-query";
-import React from "react";
+
 import { Helmet } from "react-helmet-async";
-import { FaTrashAlt, FaUsers } from "react-icons/fa";
+import { FaTrashAlt, FaUserShield, FaUsers } from "react-icons/fa";
 import Title from "../../Components/SectionTitle/Title";
 
 const AllUsers = () => {
@@ -9,11 +9,12 @@ const AllUsers = () => {
     const res = await fetch("http://localhost:5000/users");
     return res.json();
   });
+  const handleAdmin = (admin) => {};
 
   return (
     <div className="w-full">
       <Helmet>
-        <title>Bistro Boss | My Cart</title>
+        <title>Bistro Boss | All Users</title>
       </Helmet>
       <div className="boss-container">
         <Title>
@@ -44,8 +45,8 @@ const AllUsers = () => {
                       <td className="text-[#737373] text-lg ">{user.name}</td>
                       <td className="text-[#737373] text-lg ">{user.email}</td>
                       <td>
-                        <button type="button" className="btn bg-[#D1A054] border-0 ">
-                          <FaUsers className="w-5 h-5" />
+                        <button onClick={() => handleAdmin(user._id)} type="button" className="btn  bg-[#D1A054] border-0 ">
+                          {user.roll === "admin" ? <FaUserShield className="w-5 h-5" /> : <FaUsers className="w-5 h-5" />}
                         </button>
                       </td>
                       <th>
