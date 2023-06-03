@@ -40,7 +40,7 @@ const MyCart = () => {
       </Helmet>
       <div className="boss-container">
         <Title>
-          <span className="text-white lg:text-[#d1a054]">---My Cart---</span>
+          <span className="text-white lg:text-[#D99904]">---My Cart---</span>
           <span className="text-2xl lg:text-4xl">WANNA ADD MORE?</span>
         </Title>
         <div className="bg-[#FFFFFF] border p-4 lg:p-[50px]  ">

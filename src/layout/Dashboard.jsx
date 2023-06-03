@@ -51,7 +51,7 @@ const Dashboard = () => {
                 </NavLink>
               </li>
               <li>
-                <NavLink to="/dashboard/history">
+                <NavLink to="/dashboard/allUsers">
                   <FaUsers className="w-5 h-5" /> <span className="font-cinzel font-semibold">all users</span>
                 </NavLink>
               </li>
