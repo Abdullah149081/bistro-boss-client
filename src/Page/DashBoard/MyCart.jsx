@@ -1,12 +1,38 @@
 import React from "react";
 import { Helmet } from "react-helmet-async";
 import { FaTrashAlt } from "react-icons/fa";
+import Swal from "sweetalert2";
 import Title from "../../Components/SectionTitle/Title";
 import useCart from "../../Hooks/useCart";
 
 const MyCart = () => {
-  const [cart] = useCart();
+  const [cart, refetch] = useCart();
   const total = cart.reduce((sum, item) => item.price + sum, 0);
+
+  const handleDelete = (id) => {
+    Swal.fire({
+      title: "Are you sure?",
+      text: "You won't be able to revert this!",
+      icon: "warning",
+      showCancelButton: true,
+      confirmButtonColor: "#3085d6",
+      cancelButtonColor: "#d33",
+      confirmButtonText: "Yes, delete it!",
+    }).then((result) => {
+      if (result.isConfirmed) {
+        fetch(`http://localhost:5000/carts/${id}`, {
+          method: "DELETE",
+        })
+          .then((res) => res.json())
+          .then((data) => {
+            if (data.deletedCount > 0) {
+              Swal.fire("Deleted!", "Your Order has been deleted.", "success");
+            }
+            refetch();
+          });
+      }
+    });
+  };
   return (
     <div className="w-full">
       <Helmet>
@@ -15,7 +41,7 @@ const MyCart = () => {
       <div className="boss-container">
         <Title>
           <span className="text-white lg:text-[#d1a054]">---My Cart---</span>
-          <span>WANNA ADD MORE?</span>
+          <span className="text-2xl lg:text-4xl">WANNA ADD MORE?</span>
         </Title>
         <div className="bg-[#FFFFFF] border p-4 lg:p-[50px]  ">
           <div className="flex  justify-between items-center">
@@ -25,7 +51,7 @@ const MyCart = () => {
               Pay
             </button>
           </div>
-
+          {/* TODO: Table working pagination  */}
           <div className="overflow-x-auto ">
             <table className="table w-full mt-10 text-center  table-pin-rows">
               <thead>
@@ -38,7 +64,7 @@ const MyCart = () => {
                 </tr>
               </thead>
               <tbody>
-                {cart.slice(2, 10).map((item, idx) => (
+                {cart.slice(0, 6).map((item, idx) => (
                   <tr key={item._id}>
                     <td>{idx + 1}</td>
                     <td>
@@ -53,7 +79,7 @@ const MyCart = () => {
                     <td>{item.name}</td>
                     <td>${item.price}</td>
                     <th>
-                      <button type="button" className="btn bg-red-600 border-0 ">
+                      <button onClick={() => handleDelete(item._id)} type="button" className="btn bg-red-600 border-0 ">
                         <FaTrashAlt className="w-5 h-5" />
                       </button>
                     </th>
