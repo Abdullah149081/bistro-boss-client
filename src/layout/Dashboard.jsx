@@ -8,7 +8,7 @@ import useCart from "../Hooks/useCart";
 const Dashboard = () => {
   const [cart] = useCart();
   // TODO : admin database
-  // const isAdmin = true;
+
   const [isAdmin] = useAdmin();
 
   return (

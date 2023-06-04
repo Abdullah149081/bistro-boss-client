@@ -9,10 +9,10 @@ import Header from "../Page/Shared/Header/Header";
 import logo from "/logo.png";
 
 const Main = () => {
-  const { fullLoading } = useAuth();
+  const { loading } = useAuth();
   const location = useLocation();
 
-  if (fullLoading) {
+  if (loading) {
     return (
       <div className="flex flex-col min-h-screen justify-center mt-4 items-center">
         <div>

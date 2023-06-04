@@ -10,21 +10,20 @@ const googleProvider = new GoogleAuthProvider();
 const AuthProviders = ({ children }) => {
   const [user, setUser] = useState(null);
   const [loading, setLoading] = useState(true);
-  const [fullLoading, setFullLoading] = useState(true);
 
   const createUser = (email, password) => {
-    setLoading(true);
+    // setLoading(true);
     return createUserWithEmailAndPassword(auth, email, password);
   };
   const signIn = (email, password) => {
-    setLoading(true);
+    // setLoading(true);
     return signInWithEmailAndPassword(auth, email, password);
   };
   const logOut = () => {
     return signOut(auth);
   };
   const updateUserData = (name, photo) => {
-    setLoading(true);
+    // setLoading(true);
     return updateProfile(auth.currentUser, {
       displayName: name,
       photoURL: photo,
@@ -44,12 +43,10 @@ const AuthProviders = ({ children }) => {
           .then((data) => {
             localStorage.setItem("token", data.data.token);
             setLoading(false);
-            setFullLoading(false);
           });
       } else {
         localStorage.removeItem("token");
         setLoading(false);
-        setFullLoading(false);
       }
     });
 
@@ -57,11 +54,11 @@ const AuthProviders = ({ children }) => {
   }, []);
 
   const googleSignIn = () => {
-    setLoading(true);
+    // setLoading(true);
     return signInWithPopup(auth, googleProvider);
   };
 
-  const authInfo = useMemo(() => ({ user, createUser, signIn, logOut, loading, googleSignIn, updateUserData, fullLoading }), [fullLoading, loading, user]);
+  const authInfo = useMemo(() => ({ user, createUser, signIn, logOut, loading, googleSignIn, updateUserData }), [loading, user]);
 
   return <AuthContext.Provider value={authInfo}>{children}</AuthContext.Provider>;
 };
