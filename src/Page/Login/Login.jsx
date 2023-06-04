@@ -1,4 +1,4 @@
-import { useContext, useEffect, useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { Helmet } from "react-helmet-async";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import { LoadCanvasTemplate, loadCaptchaEnginge, validateCaptcha } from "react-simple-captcha";
@@ -6,10 +6,10 @@ import bannerLogin from "../../assets/others/authentication.png";
 import loginPic from "../../assets/others/authentication2.png";
 import Social from "./Social";
 
-import { AuthContext } from "../../providers/AuthProviders";
+import useAuth from "../../Hooks/useAuth";
 
 const Login = () => {
-  const { signIn } = useContext(AuthContext);
+  const { signIn } = useAuth();
   const [disabled, setDisabled] = useState(true);
   const navigate = useNavigate();
   const location = useLocation();

@@ -1,14 +1,15 @@
 /* eslint-disable jsx-a11y/no-noninteractive-tabindex */
 import { Button } from "flowbite-react";
-import React, { useContext } from "react";
+
 import { FaShoppingCart } from "react-icons/fa";
 import { Link } from "react-router-dom";
+import useAuth from "../../../Hooks/useAuth";
 import useCart from "../../../Hooks/useCart";
-import { AuthContext } from "../../../providers/AuthProviders";
+
 import ActiveLink from "./ActiveLink";
 
 const Header = () => {
-  const { user, logOut } = useContext(AuthContext);
+  const { user, logOut } = useAuth();
   const [cart] = useCart();
 
   const handleLogOut = () => {

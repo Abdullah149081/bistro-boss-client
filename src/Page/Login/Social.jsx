@@ -1,10 +1,9 @@
-import React, { useContext } from "react";
 import { FaFacebookF, FaGithub, FaGoogle } from "react-icons/fa";
-import { Link, useLocation, useNavigate } from "react-router-dom";
-import { AuthContext } from "../../providers/AuthProviders";
+import { useLocation, useNavigate } from "react-router-dom";
+import useAuth from "../../Hooks/useAuth";
 
 const Social = () => {
-  const { googleSignIn } = useContext(AuthContext);
+  const { googleSignIn } = useAuth();
   const navigate = useNavigate();
   const location = useLocation();
   const from = location.state?.from?.pathname || "/";

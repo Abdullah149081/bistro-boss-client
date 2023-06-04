@@ -1,16 +1,15 @@
-import React, { useContext, useState } from "react";
+import React, { useState } from "react";
 import { Helmet } from "react-helmet-async";
 import { useForm } from "react-hook-form";
 import { Link, useNavigate } from "react-router-dom";
+import useAuth from "../../Hooks/useAuth";
 import bannerLogin from "../../assets/others/authentication.png";
 import loginPic from "../../assets/others/authentication2.png";
 import Social from "./Social";
 
-import { AuthContext } from "../../providers/AuthProviders";
-
 const Register = () => {
   const [error, setError] = useState("");
-  const { createUser, logOut, updateUserData } = useContext(AuthContext);
+  const { createUser, logOut, updateUserData } = useAuth();
   const navigate = useNavigate();
   const {
     register,

@@ -1,15 +1,15 @@
 /* eslint-disable import/no-unresolved */
 /* eslint-disable import/no-absolute-path */
 
-import { useContext } from "react";
 import { Outlet, ScrollRestoration, useLocation } from "react-router-dom";
+import useAuth from "../Hooks/useAuth";
 import Footer from "../Page/Shared/Footer/Footer";
 import Header from "../Page/Shared/Header/Header";
-import { AuthContext } from "../providers/AuthProviders";
+
 import logo from "/logo.png";
 
 const Main = () => {
-  const { loading } = useContext(AuthContext);
+  const { loading } = useAuth();
   const location = useLocation();
 
   if (loading) {

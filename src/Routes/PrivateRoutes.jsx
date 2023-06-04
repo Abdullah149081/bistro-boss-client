@@ -1,12 +1,12 @@
 /* eslint-disable import/no-unresolved */
 /* eslint-disable import/no-absolute-path */
-import { useContext } from "react";
+
 import { Navigate, useLocation } from "react-router-dom";
-import { AuthContext } from "../providers/AuthProviders";
+import useAuth from "../Hooks/useAuth";
 import logo from "/logo.png";
 
 const PrivateRoutes = ({ children }) => {
-  const { user, loading } = useContext(AuthContext);
+  const { user, loading } = useAuth();
   const location = useLocation();
 
   if (loading) {

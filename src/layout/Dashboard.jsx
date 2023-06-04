@@ -1,4 +1,3 @@
-import { useContext } from "react";
 import { FaBars, FaBook, FaCalendarAlt, FaHome, FaShopify, FaShoppingCart, FaUsers, FaWallet } from "react-icons/fa";
 import { ImSpoonKnife } from "react-icons/im";
 import { TfiMenuAlt } from "react-icons/tfi";
