@@ -37,7 +37,7 @@ const Dashboard = () => {
                 </NavLink>
               </li>
               <li>
-                <NavLink to="/dashboard/reservations">
+                <NavLink to="/dashboard/addItem">
                   <ImSpoonKnife className="w-5 h-5" /> <span className="font-cinzel font-semibold">add items</span>
                 </NavLink>
               </li>
