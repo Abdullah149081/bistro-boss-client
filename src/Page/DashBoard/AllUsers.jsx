@@ -4,28 +4,42 @@ import { Helmet } from "react-helmet-async";
 import { FaTrashAlt, FaUserShield, FaUsers } from "react-icons/fa";
 import Swal from "sweetalert2";
 import Title from "../../Components/SectionTitle/Title";
+import useAxiosSecure from "../../Hooks/useAxiosSecure";
 
 const AllUsers = () => {
+  const [axiosSecure] = useAxiosSecure();
   const { refetch, data: users = [] } = useQuery(["users"], async () => {
-    const res = await fetch("http://localhost:5000/users");
-    return res.json();
+    const res = await axiosSecure.get("/users");
+    return res.data;
   });
   const handleAdmin = (user) => {
-    fetch(`http://localhost:5000/users/admin/${user._id}`, {
-      method: "PATCH",
-    })
-      .then((res) => res.json())
-      .then((data) => {
-        if (data.modifiedCount) {
-          Swal.fire({
-            title: "success",
-            text: `${user.name} is now Admin`,
-            icon: "success",
-            confirmButtonText: "Cool",
+    Swal.fire({
+      title: "Are you sure?",
+      text: "You won't be able to revert this!",
+      icon: "warning",
+      showCancelButton: true,
+      confirmButtonColor: "#3085d6",
+      cancelButtonColor: "#d33",
+      confirmButtonText: "Yes, Admin it",
+    }).then((result) => {
+      if (result.isConfirmed) {
+        fetch(`http://localhost:5000/users/admin/${user._id}`, {
+          method: "PATCH",
+        })
+          .then((res) => res.json())
+          .then((data) => {
+            if (data.modifiedCount) {
+              Swal.fire({
+                title: "success",
+                text: `${user.name} is now Admin`,
+                icon: "success",
+                confirmButtonText: "Cool",
+              });
+              refetch();
+            }
           });
-          refetch();
-        }
-      });
+      }
+    });
   };
   const handleDelete = (id) => {
     Swal.fire({
@@ -87,7 +101,7 @@ const AllUsers = () => {
                       <td className="text-[#737373] text-lg ">{user.email}</td>
                       <td>
                         <button onClick={() => handleAdmin(user)} type="button" className="btn  bg-[#D1A054] border-0 ">
-                          {user.roll === "admin" ? <FaUserShield className="w-5 h-5" /> : <FaUsers className="w-5 h-5" />}
+                          {user.role === "admin" ? <FaUserShield className="w-5 h-5" /> : <FaUsers className="w-5 h-5" />}
                         </button>
                       </td>
                       <th>

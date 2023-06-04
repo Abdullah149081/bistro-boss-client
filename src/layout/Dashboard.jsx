@@ -2,12 +2,14 @@ import { FaBars, FaBook, FaCalendarAlt, FaHome, FaShopify, FaShoppingCart, FaUse
 import { ImSpoonKnife } from "react-icons/im";
 import { TfiMenuAlt } from "react-icons/tfi";
 import { NavLink, Outlet } from "react-router-dom";
+import useAdmin from "../Hooks/useAdmin";
 import useCart from "../Hooks/useCart";
 
 const Dashboard = () => {
   const [cart] = useCart();
   // TODO : admin database
-  const isAdmin = true;
+  // const isAdmin = true;
+  const [isAdmin] = useAdmin();
 
   return (
     <div className="drawer drawer-mobile ">
