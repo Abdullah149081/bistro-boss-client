@@ -1,13 +1,36 @@
 import React from "react";
 import { Helmet } from "react-helmet-async";
-import { FaTrashAlt } from "react-icons/fa";
+import { FaEdit, FaTrashAlt } from "react-icons/fa";
+
+import Swal from "sweetalert2";
 import Title from "../../Components/SectionTitle/Title";
 
+import useAxiosSecure from "../../Hooks/useAxiosSecure";
 import useMenu from "../../Hooks/useMenu";
 
 const MangeItems = () => {
-  const [, menu] = useMenu();
-  const handleDelete = () => {};
+  const [axiosSecure] = useAxiosSecure();
+  const [refetch, menu] = useMenu();
+  const handleDelete = (id) => {
+    Swal.fire({
+      title: "Are you sure?",
+      text: "You won't be able to revert this!",
+      icon: "warning",
+      showCancelButton: true,
+      confirmButtonColor: "#3085d6",
+      cancelButtonColor: "#d33",
+      confirmButtonText: "Yes, delete it!",
+    }).then((result) => {
+      if (result.isConfirmed) {
+        axiosSecure.delete(`/menu/${id}`).then((data) => {
+          if (data.data.deletedCount > 0) {
+            Swal.fire("Deleted!", "Menu has been deleted.", "success");
+          }
+          refetch();
+        });
+      }
+    });
+  };
   return (
     <div className="w-full">
       <Helmet>
@@ -31,14 +54,16 @@ const MangeItems = () => {
                     <th className="bg-[#D1A054] text-white tracking-wide">#</th>
                     <th className="bg-[#D1A054] text-white tracking-wide">ITEM IMAGE</th>
                     <th className="bg-[#D1A054] text-white tracking-wide">ITEM NAME</th>
+                    <th className="bg-[#D1A054] text-white tracking-wide">Category</th>
                     <th className="bg-[#D1A054] text-white tracking-wide">PRICE</th>
+                    <th className="bg-[#D1A054] text-white tracking-wide">ACTION</th>
                     <th className="bg-[#D1A054] text-white tracking-wide">ACTION</th>
                   </tr>
                 </thead>
                 <tbody>
-                  {menu?.slice(0, 6).map((item, idx) => (
+                  {menu?.map((item, idx) => (
                     <tr key={item._id}>
-                      <td>{idx + 1}</td>
+                      <td className="font-bold">{idx + 1}</td>
                       <td>
                         <div className="flex items-center justify-center space-x-3">
                           <div className="avatar">
@@ -49,7 +74,13 @@ const MangeItems = () => {
                         </div>
                       </td>
                       <td>{item.name}</td>
+                      <td>{item.category}</td>
                       <td>${item.price}</td>
+                      <th>
+                        <button onClick={() => handleDelete(item._id)} type="button" className="btn bg-[#D1A054] border-0 ">
+                          <FaEdit className="w-5 h-5" />
+                        </button>
+                      </th>
                       <th>
                         <button onClick={() => handleDelete(item._id)} type="button" className="btn bg-red-600 border-0 ">
                           <FaTrashAlt className="w-5 h-5" />
