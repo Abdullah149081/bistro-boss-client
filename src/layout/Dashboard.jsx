@@ -42,7 +42,7 @@ const Dashboard = () => {
                 </NavLink>
               </li>
               <li>
-                <NavLink to="/dashboard/history">
+                <NavLink to="/dashboard/mangeItems">
                   <TfiMenuAlt className="w-5 h-5" /> <span className="font-cinzel font-semibold">manage items</span>
                 </NavLink>
               </li>

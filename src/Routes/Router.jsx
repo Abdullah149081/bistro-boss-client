@@ -1,6 +1,7 @@
 import { createBrowserRouter } from "react-router-dom";
 import AddItem from "../Page/DashBoard/AddItem";
 import AllUsers from "../Page/DashBoard/AllUsers";
+import MangeItems from "../Page/DashBoard/MangeItems";
 import MyCart from "../Page/DashBoard/MyCart";
 import Home from "../Page/Home/Home/Home";
 import Login from "../Page/Login/Login";
@@ -66,6 +67,14 @@ const router = createBrowserRouter([
         element: (
           <AdminRoute>
             <AddItem />
+          </AdminRoute>
+        ),
+      },
+      {
+        path: "mangeItems",
+        element: (
+          <AdminRoute>
+            <MangeItems />
           </AdminRoute>
         ),
       },

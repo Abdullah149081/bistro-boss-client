@@ -23,7 +23,7 @@ const Menu = ({ subTitle, title, btnBoss, items, category, btnPrimary }) => {
           <progress className="progress w-56 " />;
         </div>
       ) : (
-        <div className="grid lg:grid-cols-2 gap-6 mt-12">
+        <div className="grid lg:grid-cols-2 gap-12 mt-12">
           {items?.map((item) => (
             <MenuItem key={item._id} item={item} />
           ))}

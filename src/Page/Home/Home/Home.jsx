@@ -8,7 +8,7 @@ import Featured from "../Featured/Featured";
 import Testimonials from "../Testimonials/Testimonials";
 
 const Home = () => {
-  const [menu] = useMenu();
+  const [, menu] = useMenu();
   const popular = menu.filter((item) => item.category === "popular");
   return (
     <div>

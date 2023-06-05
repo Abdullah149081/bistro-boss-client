@@ -11,7 +11,7 @@ import saladBg from "../../../assets/menu/salad-bg.jpg";
 import soupBg from "../../../assets/menu/soup-bg.jpg";
 
 const OurMenu = () => {
-  const [menu] = useMenu();
+  const [, menu] = useMenu();
   const dessert = menu.filter((item) => item.category === "dessert");
   const soup = menu.filter((item) => item.category === "soup");
   const salad = menu.filter((item) => item.category === "salad");

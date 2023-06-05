@@ -12,7 +12,7 @@ const OurShop = () => {
   const { category } = useParams();
   const initialIndex = categories.indexOf(category);
   const [activeTab, setActiveTab] = useState(initialIndex);
-  const [menu, loading] = useMenu();
+  const [, menu, loading] = useMenu();
 
   const items = menu.filter(
     (item) => item.category === ((activeTab === 0 && "salad") || (activeTab === 1 && "pizza") || (activeTab === 2 && "soup") || (activeTab === 3 && "dessert") || (activeTab === 4 && "drinks"))
