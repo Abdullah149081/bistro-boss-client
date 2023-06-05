@@ -73,11 +73,11 @@ const MangeItems = () => {
                           </div>
                         </div>
                       </td>
-                      <td>{item.name}</td>
-                      <td>{item.category}</td>
-                      <td>${item.price}</td>
+                      <td className="text-[#737373] font-semibold">{item.name}</td>
+                      <td className="text-[#737373] font-semibold">{item.category}</td>
+                      <td className="text-[#737373] font-semibold">${item.price}</td>
                       <th>
-                        <button onClick={() => handleDelete(item._id)} type="button" className="btn bg-[#D1A054] border-0 ">
+                        <button type="button" className="btn bg-[#D1A054] border-0 ">
                           <FaEdit className="w-5 h-5" />
                         </button>
                       </th>

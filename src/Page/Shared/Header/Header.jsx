@@ -24,7 +24,7 @@ const Header = () => {
         <ActiveLink to="/contact">Contact us</ActiveLink>
       </li>
       <li>
-        <ActiveLink to="/dashboard">Dashboard</ActiveLink>
+        <ActiveLink to="/dashboard/myCart">Dashboard</ActiveLink>
       </li>
       <li>
         <ActiveLink to="/menu">Our menu</ActiveLink>

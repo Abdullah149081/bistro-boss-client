@@ -3,6 +3,7 @@ import AddItem from "../Page/DashBoard/AddItem";
 import AllUsers from "../Page/DashBoard/AllUsers";
 import MangeItems from "../Page/DashBoard/MangeItems";
 import MyCart from "../Page/DashBoard/MyCart";
+import Payment from "../Page/DashBoard/Payment/Payment";
 import Home from "../Page/Home/Home/Home";
 import Login from "../Page/Login/Login";
 import Register from "../Page/Login/Register";
@@ -53,6 +54,10 @@ const router = createBrowserRouter([
       {
         path: "myCart",
         element: <MyCart />,
+      },
+      {
+        path: "payment",
+        element: <Payment />,
       },
       {
         path: "allUsers",
