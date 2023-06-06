@@ -48,8 +48,8 @@ const MyCart = () => {
           <div className="flex  justify-between items-center">
             <h2 className="text-[#151515] lg:text-4xl font-bold font-cinzel">Total orders: {cart.length || 0}</h2>
             <h2 className="text-[#151515] lg:text-4xl font-bold font-cinzel">total price: ${total.toFixed(2)}</h2>
-            <Link to="/dashboard/payment">
-              <button type="button" className="btn bg-[#D1A054] border-0 font-cinzel text-lg">
+            <Link to={cart.length === 0 ? "/shop/salad" : `/dashboard/payment`}>
+              <button disabled={cart.length === 0} type="button" className="btn bg-[#D1A054] border-0 font-cinzel text-lg">
                 Pay
               </button>
             </Link>
