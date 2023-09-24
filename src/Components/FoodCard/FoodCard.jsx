@@ -1,9 +1,7 @@
-
 import { useLocation, useNavigate } from "react-router-dom";
 import Swal from "sweetalert2";
 import useAuth from "../../Hooks/useAuth";
 import useCart from "../../Hooks/useCart";
-
 
 const FoodCard = ({ item }) => {
   const { image, name, recipe, price, _id } = item || {};
@@ -15,7 +13,7 @@ const FoodCard = ({ item }) => {
   const handleAddToCart = () => {
     if (user && user.email) {
       const orderItem = { menuId: _id, name, image, price, email: user.email };
-      fetch("http://localhost:5000/carts", {
+      fetch("https://bistro-boss-server-five-kappa.vercel.app/carts", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",

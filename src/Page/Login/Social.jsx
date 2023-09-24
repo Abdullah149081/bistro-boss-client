@@ -13,7 +13,7 @@ const Social = () => {
       .then((result) => {
         const logUser = result.user;
         const saveUser = { name: logUser.displayName, email: logUser.email };
-        fetch("http://localhost:5000/users", {
+        fetch("https://bistro-boss-server-five-kappa.vercel.app/users", {
           method: "POST",
           headers: {
             "Content-Type": "application/json",

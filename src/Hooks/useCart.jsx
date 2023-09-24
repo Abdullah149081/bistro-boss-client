@@ -23,7 +23,7 @@ export default useCart;
 /*
 
 const { refetch, data: cart = [] } = useQuery(["carts", user?.email], async () => {
-  const res = await fetch(`http://localhost:5000/carts?email=${user?.email}`);
+  const res = await fetch(`https://bistro-boss-server-five-kappa.vercel.app/carts?email=${user?.email}`);
   return res.json();
 });
 
